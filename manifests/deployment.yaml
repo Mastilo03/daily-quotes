@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-app
+  namespace: daily-quote
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flask-app
+  template:
+    metadata:
+      labels:
+        app: flask-app
+    spec:
+      containers:
+        - name: flask-app
+          image: mastilo03/daily-quote-generator:latest
+          ports:
+            - containerPort: 5000
+          env:
+            - name: FLASK_APP
+              value: main
+            - name: FLASK_RUN_HOST
+              value: "0.0.0.0"
+            - name: FLASK_RUN_PORT
+              value: "5000"
+            - name: SQLALCHEMY_DATABASE_URI
+              value: postgresql://postgres:postgres@postgres.daily-quote.svc.cluster.local:5432/quotes_db
