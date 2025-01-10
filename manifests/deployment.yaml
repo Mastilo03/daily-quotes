@@ -25,5 +25,5 @@ spec:
               value: "0.0.0.0"
             - name: FLASK_RUN_PORT
               value: "5000"
-            - name: SQLALCHEMY_DATABASE_URI
-              value: postgresql://postgres:postgres@postgres.daily-quote.svc.cluster.local:5432/quotes_db
+            - name: MONGO_URI
+              value: mongodb://mongo.daily-quote.svc.cluster.local:27017/quotes_db

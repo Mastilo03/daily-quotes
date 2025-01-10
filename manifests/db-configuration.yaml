@@ -1,18 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: postgres-config
+  name: mongo-config
   namespace: daily-quote
 data:
-  POSTGRES_DB: quotes_db
-
----
-apiVersion: v1
-kind: Secret
-metadata:
-  name: postgres-secret
-  namespace: daily-quote
-type: Opaque
-data:
-  POSTGRES_USER: cG9zdGdyZXM=
-  POSTGRES_PASSWORD: cG9zdGdyZXM=
+  MONGO_INITDB_DATABASE: quotes_db
