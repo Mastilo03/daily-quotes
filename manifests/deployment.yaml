@@ -26,4 +26,14 @@ spec:
             - name: FLASK_RUN_PORT
               value: "5000"
             - name: MONGO_URI
-              value: mongodb://mongo.daily-quote.svc.cluster.local:27017/quotes_db
+              value: mongodb://$(MONGO_INITDB_ROOT_USERNAME):$(MONGO_INITDB_ROOT_PASSWORD)@mongo.daily-quote.svc.cluster.local:27017/quotes_db
+            - name: MONGO_INITDB_ROOT_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-secret
+                  key: MONGO_INITDB_ROOT_USERNAME
+            - name: MONGO_INITDB_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-secret
+                  key: MONGO_INITDB_ROOT_PASSWORD
