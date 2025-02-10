@@ -2,7 +2,6 @@ from flask import Blueprint, jsonify, request
 from . import mongo
 import random
 
-# Create a blueprint for the routes
 main = Blueprint('main', __name__)
 
 @main.route('/daily-quote', methods=['GET'])
